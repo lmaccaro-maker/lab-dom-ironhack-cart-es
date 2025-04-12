@@ -24,38 +24,31 @@ function updateSubtotal(product) {
 //});
 
 
-// ITERATION 2
-//... your code goes here
+// ITERATION 2 - 3
 
 function calculateAll() {
-
-  const singleProduct = document.querySelectorAll('.product');
-
-  for (let i = 0; i < singleProduct.length; i++) updateSubtotal(singleProduct[i]);
-
-
   const products = document.querySelectorAll('.product');
 
-  Array.from(products), array.forEach((product) => {
-
-    updateSubtotal(products);
-
-  });
-
-
-  // ITERATION 3
-
   let totalvalue = 0;
-  Array.from(products), array.forEach((product) => {
-    const subtotalElement = singleProduct.querySelector('.subtotal span');
-    const subtotal = parseFloat(subtotalElement.innerText);
-    totalvalue += subtotal;
+
+  // Calcula el subtotal para cada producto y suma con el total
+  products.forEach(product => {
+    totalvalue += updateSubtotal(product);
   });
 
+  // Actualiza el total mostrado en el DOM
   const totalElement = document.querySelector('#total-value span');
-  totalElement.textContent = total.toFixed(2);
-
+  totalElement.textContent = totalvalue.toFixed(2);
 }
+
+// Vincula el evento click del botón para calcular los precios
+document.getElementById('calculate').addEventListener('click', () => {
+  alert('Calculate Prices clicked!'); // Muestra una alerta
+  calculateAll(); // Llama a calculateAll para procesar los cálculos
+});
+
+
+
 
 // ITERATION 4
 
