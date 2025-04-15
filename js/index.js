@@ -18,53 +18,47 @@ function updateSubtotal(product) {
   return subtotal;
 }
 
-//document.getElementById('calculate').addEventListener('click', () => {
-//  alert('Calculate Prices clicked!'); // Muestra la alerta
-// calculateAll(); // Llama a calculateAll para procesar los cálculos
-//});
 
 
-// ITERATION 2 - 3
+// ITERATION 2 
 
 function calculateAll() {
   const products = document.querySelectorAll('.product');
+  let totalValue = 0;
 
-  let totalvalue = 0;
-
-  // Calcula el subtotal para cada producto y suma con el total
   products.forEach(product => {
-    totalvalue += updateSubtotal(product);
+    totalValue += updateSubtotal(product); // Utiliza el subtotal retornado de `updateSubtotal`
   });
 
-  // Actualiza el total mostrado en el DOM
+  // Actualiza el total en el DOM
   const totalElement = document.querySelector('#total-value span');
-  totalElement.textContent = totalvalue.toFixed(2);
+  totalElement.textContent = totalValue.toFixed(2); // Muestra el total con dos decimales
 }
 
-// Vincula el evento click del botón para calcular los precios
-document.getElementById('calculate').addEventListener('click', () => {
-  alert('Calculate Prices clicked!'); // Muestra una alerta
-  calculateAll(); // Llama a calculateAll para procesar los cálculos
+
+window.addEventListener('load', () => {
+  const calculatePricesBtn = document.getElementById('calculate');
+  calculatePricesBtn.addEventListener('click', function() {
+    calculateAll();
+  });
 });
 
 
-
-
 // ITERATION 4
-
-function removeProduct(event) {
-  const target = event.currentTarget;
-  console.log('The target in remove is:', target);
+//.function removeProduct(event) {
+// const target = event.currentTarget;
+// console.log('The target in remove is:', target);
   //... your code goes here
   // closest();
   // remove();
+  // calculateAll();
+ // }
 
-  calculateAll();
-}
 
-// ITERATION 5
 
-function createProduct() {
+// ITERATION
+// 
+// function createProduct() {
   /*
   if(!name || isNaN(price)) {
     alert("Algo ha ido mal")
@@ -77,12 +71,4 @@ function createProduct() {
   // 3º creas el HTML con los valores recogidos
   // 4º Inyectas el HTML en la tabla que ya existe
   // 5º Limpias el formulario
-}
-
-window.addEventListener('load', () => {
-  const calculatePricesBtn = document.getElementById('calculate');
-  calculatePricesBtn.addEventListener('click', calculateAll);
-
-  //... your code goes here
-});
 
